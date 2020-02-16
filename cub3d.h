@@ -6,7 +6,7 @@
 /*   By: aamzil <aamzil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 14:20:11 by aamzil            #+#    #+#             */
-/*   Updated: 2020/02/16 17:50:08 by aamzil           ###   ########.fr       */
+/*   Updated: 2020/02/16 23:14:25 by aamzil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,11 @@ typedef struct	s_texture_data
 
 typedef struct		s_sprite
 {
-	struct s_sprite	*next;
 	int				x;
 	int				y;
 	float			dist;
 	float			angle;
-	int			size;
+	int				size;
 }					t_sprite;
 
 t_map           g_map;
@@ -139,6 +138,7 @@ int					g_map_height;
 float				g_box_size;
 int					g_num_rays;
 int					g_mini_map;
+int					g_nb_sprites;
 
 int					g_duplicate[8];
 int					g_error;
@@ -157,10 +157,11 @@ void	treat_map(char *line);
 int                 ft_list_size(t_map_from_file *node);
 void    fill_map();
 void    check_the_rgb();
-void    treat_sprites(t_sprite *sprite);
+void    treat_sprites();
 float	normalize_angle(float angle);
 float	calc_distance(float x, float y);
 void	mlx_pixel_put_img(int x, int y, int color);
 float		calc_distance(float x, float y);
+void    generate_sprite();
 
 #endif

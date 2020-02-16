@@ -6,7 +6,7 @@
 /*   By: aamzil <aamzil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:22:18 by aamzil            #+#    #+#             */
-/*   Updated: 2020/02/16 20:28:13 by aamzil           ###   ########.fr       */
+/*   Updated: 2020/02/16 22:59:37 by aamzil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ void    fill_map_row(int index, char *str)
             g_world_map[index][++j] = str[i] - '0';
             if (!(str[i] == '2'))
                 continue;
-            g_sprites->x = j;
-            g_sprites->y = index;
-            printf("%d | %d\n", j, index);
+            g_nb_sprites++;
         }
         else if (str[i] == 'S' || str[i] == 'N' || str[i] == 'E' || str[i] == 'W')
         {
@@ -81,8 +79,7 @@ void    fill_map()
     i = -1;
     g_map_width = calc_map_width();
     g_map_height = ft_list_size(g_map_list);
-    if (!(g_world_map = (int**)malloc(sizeof(int*) * g_map_height)) ||
-        !(g_sprites = (t_sprite*)malloc(sizeof(t_sprite))))
+    if (!(g_world_map = (int**)malloc(sizeof(int*) * g_map_height)))
         return ;
     while (tmp)
     {

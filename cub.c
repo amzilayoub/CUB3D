@@ -6,7 +6,7 @@
 /*   By: aamzil <aamzil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 14:19:54 by aamzil            #+#    #+#             */
-/*   Updated: 2020/02/16 20:28:44 by aamzil           ###   ########.fr       */
+/*   Updated: 2020/02/16 23:15:34 by aamzil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,7 +277,7 @@ int		draw()
 	render();
 	render3d();
 	render();
-	treat_sprites(g_sprites);
+	treat_sprites();
 	mlx_put_image_to_window(g_map.mlx_ptr, g_map.win_ptr, g_map.img_ptr, 0, 0);
 	my_clear();
 	return (0);
@@ -386,6 +386,7 @@ int		main()
 {
 	int useless;
 
+	g_nb_sprites = 0;
 	main_read_func();
 	if (!(all_rays = (t_ray*)malloc(sizeof(t_ray) * g_file_info.win_width)))
 		return (0);
@@ -432,7 +433,7 @@ int		main()
 	g_map.img_ptr = mlx_new_image(g_map.mlx_ptr, g_file_info.win_width, g_file_info.win_height);
 	g_map.img_data = (int *)mlx_get_data_addr(g_map.img_ptr, &useless, &useless, &useless);
 	texture_data();
-	treat_sprites(g_sprites);
+	generate_sprite();
 	render_map();
 	render_player();
 	cast_ray();
