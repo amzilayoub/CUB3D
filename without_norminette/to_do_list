@@ -1,0 +1,5 @@
+// Max size of the windows => Done !
+// W, S ,A ,D Keys => Done !
+// close button and ESC button => Done !
+// leak memory => Done !
+// errors with perror
