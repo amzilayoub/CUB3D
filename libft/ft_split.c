@@ -34,17 +34,6 @@ static int	c_w(char const *s, char c)
 	return (count);
 }
 
-static char	**freemem(char **array)
-{
-	int i;
-
-	i = -1;
-	while (array[++i])
-		free(array[i]);
-	free(array);
-	return (NULL);
-}
-
 static int	l_n_s(const char *s, char c)
 {
 	int i;
@@ -64,7 +53,7 @@ char		**ft_split(char const *s, char c)
 	int		is_char;
 	int		j;
 
-	if (!s || !(array = (char**)malloc(sizeof(char*) * (c_w(s, c) + 1))))
+	if (!s || !(array = (char**)my_malloc(sizeof(char*) * (c_w(s, c) + 1))))
 		return (NULL);
 	j = -1;
 	i = -1;
@@ -75,8 +64,7 @@ char		**ft_split(char const *s, char c)
 			is_char = 1;
 		if (is_char && s[i] != c)
 		{
-			if (!(array[++j] = ft_substr(s + i, 0, l_n_s(s + i, c))))
-				return (freemem(array));
+			array[++j] = ft_substr(s + i, 0, l_n_s(s + i, c));
 			is_char = 0;
 		}
 	}
